@@ -1,0 +1,38 @@
+server:
+  port: 9191
+spring:
+  application:
+    name: API-GATEWAY
+  cloud:
+    gateway:
+      routes:
+       - 
+        id: INVOICE-SERVICE
+        uri: lb://INVOICE-SERVICE
+        predicates:
+          Path= /invoice/**
+        filters:
+          - name: CircuitBreaker
+            args:
+              name: INVOICE-SERVICE
+              fallbackuri: forward:/invoiceServiceFallBack
+       - 
+        id: MEDICINE-SERVICE
+        uri: lb://MEDICINE-SERVICE
+        predicates:
+          Path= /medicine/**
+        filters:
+          - name: CircuitBreaker
+            args:
+              name: MEDICINE-SERVICE
+              fallbackuri: forward:/medicineServiceFallBack
+      
+
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+  instance:
+    hostname: localhost
