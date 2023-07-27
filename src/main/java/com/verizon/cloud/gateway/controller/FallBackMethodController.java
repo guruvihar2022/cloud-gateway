@@ -8,11 +8,11 @@ public class FallBackMethodController {
 
 	@GetMapping("/medicineServiceFallBack")
 	public String medicineSerivceFallBackMethod() {
-		return "Medicine service fall back method";
+		return "Medicine service fall back method -call back"; 
 	}
 	
 	@GetMapping("/invoiceServiceFallBack")
 	public String invoiceServiceFallBackMethod() {
-		return "Invoice service fall back method";
+		return "Invoice service fall back method- call back"; 
 	}
 }
