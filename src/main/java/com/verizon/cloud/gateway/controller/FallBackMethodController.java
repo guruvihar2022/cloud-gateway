@@ -13,6 +13,6 @@ public class FallBackMethodController {
 	
 	@GetMapping("/invoiceServiceFallBack")
 	public String invoiceServiceFallBackMethod() {
-		return "Invoice service fall back method- call back";
+		return "Invoice service fall back method- call back"; 
 	}
 }
